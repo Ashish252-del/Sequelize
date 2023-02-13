@@ -1,0 +1,56 @@
+1.             express.json() vs express.urlencoded()
+
+Here is the explanation that should clear doubts on express.json() and express.urlencoded() and the use of body-parser.
+
+When talking about express.json() and express.urlencoded() think specifically about POST requests (i.e. the .post request object) and PUT Requests (i.e. the .put request object).You DO NOT NEED express.json() and express.urlencoded() for GET Requests or DELETE Requests.You NEED express.json() and express.urlencoded() for POST and PUT requests, because in both these requests you are sending data (in the form of some data object) to the server and you are asking the server to accept or store that data (object), which is enclosed in the body (i.e. req.body) of that (POST or PUT) Request.
+
+express.json() is a method inbuilt in express to recognize the incoming Request Object as a JSON Object. This method is called as a middleware in your application using the code: app.use(express.json());
+
+express.urlencoded() is a method inbuilt in express to recognize the incoming Request Object as strings or arrays. This method is called as a middleware in your application using the code: app.use(express.urlencoded());
+
+// parse application/json, basically parse incoming Request Object as a JSON Object 
+app.use(express.json());
+// parse application/x-www-form-urlencoded, basically can only parse incoming Request Object if strings or arrays
+app.use(express.urlencoded({ extended: false }));
+// parse incoming Request Object if object, with nested objects, or generally any type.
+app.use(express.urlencoded({ extended: true }));
+
+
+
+1. validatation and constrain
+2. raw queries
+3. Associations 
+4. Scope 
+
+
+                                         // loading 
+ there are two methods to fath data eger loading and lazy loading 
+
+ // Naming Strategi 
+ mysql made some name bydefault to handle that we need use namig strategi 
+ for examle mysql add by default s at the end of table name 
+
+      // Paranoid Soft Delete 
+   Normally when we delete data from databse that delete permanently but in shoft delete 
+   when someone delete that row then still data will be in database with a filed indicating that data is deleted 
+   also we can restore all data and get again 
+   See Model employee for better understanding 
+
+
+          // Transaction 
+Suppose we have a databse and now we are performing any operation of crud due to which database 
+will be effected for example we add a new row then our database is effected if everything is ok then we will commit 
+
+consider a senario that in our databse we have to updated age and we updated but we realise that the updated age is wrong and previouse one was fine 
+then we have option to roll back , roll back will revert data but only the condition is change should not be commited 
+    
+        // Hooks 
+Suppose you need to perform some operation before or after  sequelize function 
+ for example:- before insert 
+               before delete 
+               before update  
+               after delete 
+               after validated 
+               before validate 
+               
+               
